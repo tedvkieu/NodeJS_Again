@@ -18,11 +18,6 @@ configViewEngine(app);
 app.use('/', webRouter);
 app.use('/home', webRouter);
 
-//MySQL
-connection.query('select * from users u', function (err, results, fields) {
-    console.log('>>>results = ', results);
-});
-
 app.listen(port, hostname, () => {
     console.log(`Example app listening on port ${port}, host ${hostname}`);
 });
