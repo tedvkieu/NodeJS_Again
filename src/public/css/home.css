@@ -29,3 +29,16 @@
     background-color: #04aa6d;
     color: white;
 }
+/*----------------------- Feilset ----------------*/
+.form-add-new {
+    width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.input-group {
+    padding: 10px;
+}
+button {
+    margin: 10px;
+    cursor: pointer;
+}
