@@ -14,6 +14,10 @@ const connection = require('./config/database');
 //Config
 configViewEngine(app);
 
+//config req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // ROUTE
 app.use('/', webRouter);
 app.use('/home', webRouter);

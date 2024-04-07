@@ -14,7 +14,13 @@ const getHelloWorld = (req, res) => {
     });
 };
 
+const postCreateUser = (req, res) => {
+    console.log(req.body);
+    res.send('Create a new user');
+};
+
 module.exports = {
     getHomePage,
     getHelloWorld,
+    postCreateUser,
 };
