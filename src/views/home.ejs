@@ -4,36 +4,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Home Page</title>
         <link rel="stylesheet" href="/css/home.css" />
-    </head>
+
     <body>
         <div class="topnav">
             <a class="active" href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <a href="/create">Create New User</a>
         </div>
-        <div class="form-add-new">
-            <form action="/create_user" method="POST">
-                <fieldset>
-                    <legend>Add new user</legend>
-
-                    <div class="input-group">
-                        <label>Email: </label>
-                        <input type="text" name="email" />
-                    </div>
-                    <div class="input-group">
-                        <label>Name: </label>
-                        <input type="text" name="myname" />
-                    </div>
-                    <div class="input-group">
-                        <label>City: </label>
-                        <input type="text" name="city" />
-                    </div>
-                    <div>
-                        <button>Save</button>
-                    </div>
-                </fieldset>
-            </form>
+        <div class="table-content">
+            <div class="title">List Users</div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>City</th>
+                </tr>
+                <tr>
+                    <td>Peter</td>
+                    <td>Griffin</td>
+                    <td>$100</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>Lois</td>
+                    <td>Griffin</td>
+                    <td>$150</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>Joe</td>
+                    <td>Swanson</td>
+                    <td>$300</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>Cleveland</td>
+                    <td>Brown</td>
+                    <td>$250</td>
+                    <td>$100</td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
