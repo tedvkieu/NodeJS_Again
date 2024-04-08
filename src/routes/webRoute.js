@@ -7,9 +7,9 @@ const {
     getCreatePage,
 } = require('../controllers/homeController');
 
-router.get('/', getHelloWorld);
+router.get('/', getHomePage);
 
-router.get('/home', getHomePage);
+router.get('/home', getHelloWorld);
 
 router.get('/create', getCreatePage);
 

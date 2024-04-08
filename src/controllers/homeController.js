@@ -1,7 +1,9 @@
 const connection = require('../config/database');
+const { getAllUsers } = require('../services/CRUDservices');
 
-const getHomePage = (req, res) => {
-    return res.render('home.ejs');
+const getHomePage = async (req, res) => {
+    let rs = await getAllUsers();
+    return res.render('home.ejs', { listUsers: rs });
 };
 const getHelloWorld = (req, res) => {
     //MySQL
