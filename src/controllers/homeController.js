@@ -15,8 +15,18 @@ const getHelloWorld = (req, res) => {
 };
 
 const postCreateUser = (req, res) => {
-    console.log(req.body);
-    res.send('Create a new user');
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+
+    connection.query(
+        `INSERT into Users (email, name, city) values (?,?,?)`,
+        [email, name, city],
+        function (err, results) {
+            console.log(results);
+            res.send('create user success');
+        }
+    );
 };
 
 module.exports = {
