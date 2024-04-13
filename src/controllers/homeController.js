@@ -43,6 +43,12 @@ const postUpdateUser = async (req, res) => {
     res.send('update user success');
 };
 
+const postDeleteUser = async (req, res) => {
+    const userId = req.params.id;
+    let user = await getUserByID(userId);
+    res.render('delete.ejs', { user: user });
+};
+
 const getCreatePage = (req, res) => {
     res.render('create.ejs');
 };
@@ -54,11 +60,17 @@ const getUpdatePage = async (req, res) => {
     res.render('edit.ejs', { user: user });
 };
 
+const postHandleRemoveUser = (req, res) => {
+    res.send('ok delete');
+};
+
 module.exports = {
     getHomePage,
     getHelloWorld,
     postCreateUser,
     postUpdateUser,
+    postDeleteUser,
     getCreatePage,
     getUpdatePage,
+    postHandleRemoveUser,
 };
