@@ -67,3 +67,7 @@ tr:hover {
     font-weight: 600;
     padding-bottom: 10px;
 }
+
+.d-none {
+    display: none;
+}
