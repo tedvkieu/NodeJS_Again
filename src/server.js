@@ -9,6 +9,7 @@ const hostname = process.env.HOST_NAME;
 
 const configViewEngine = require('./config/viewEngine');
 const webRouter = require('./routes/webRoute');
+const connection = require('./config/database');
 
 //Config
 configViewEngine(app);
@@ -20,6 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 // ROUTE
 app.use('/', webRouter);
 app.use('/home', webRouter);
+
+//test connection
+connection();
 
 app.listen(port, hostname, () => {
     console.log(`Example app listening on port ${port}, host ${hostname}`);
