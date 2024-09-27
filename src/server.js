@@ -25,6 +25,15 @@ app.use('/home', webRouter);
 //test connection
 connection();
 
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on port ${port}, host ${hostname}`);
-});
+(async () => {
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(
+                `Example app listening on port ${port}, host ${hostname}`
+            );
+        });
+    } catch (error) {
+        console.log('>>> Error connect to DB');
+    }
+})();
