@@ -8,8 +8,7 @@ const hostname = process.env.HOST_NAME;
 const configViewEngine = require('./config/viewEngine');
 const webRouter = require('./routes/webRoute');
 const connection = require('./config/database');
-const mongoose = require('mongoose');
-
+const Kitten = require('./models/Kitten')
 //Config
 configViewEngine(app);
 
@@ -20,11 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 // ROUTE
 app.use('/', webRouter);
 
-const kittySchema = new mongoose.Schema({
-    name: String,
-});
-const Kitten = mongoose.model('Kitten', kittySchema);
-const cat = new Kitten({ name: 'Kieu ne cac ban' });
+const cat = new Kitten({ name: 'Kieu Model' });
 cat.save();
 
 (async () => {
