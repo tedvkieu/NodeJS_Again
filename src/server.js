@@ -8,7 +8,7 @@ const hostname = process.env.HOST_NAME;
 const configViewEngine = require('./config/viewEngine');
 const webRouter = require('./routes/webRoute');
 const connection = require('./config/database');
-const Kitten = require('./models/Kitten')
+
 //Config
 configViewEngine(app);
 
@@ -18,9 +18,6 @@ app.use(express.urlencoded({ extended: true }));
 
 // ROUTE
 app.use('/', webRouter);
-
-const cat = new Kitten({ name: 'Kieu Model' });
-cat.save();
 
 (async () => {
     try {
