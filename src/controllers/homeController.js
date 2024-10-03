@@ -9,18 +9,18 @@ const User = require('../models/user');
 
 const getHomePage = async (req, res) => {
     //let rs = await getAllUsers();
-    let rs = [];
+    let rs = await User.find({});
     return res.render('home.ejs', { listUsers: rs });
 };
 const getHelloWorld = (req, res) => {
     //MySQL
-    connection.query('select * from users u', function (err, results, fields) {
-        users = results;
-        console.log('>>>results = ', results);
+    // connection.query('select * from users u', function (err, results, fields) {
+    //     users = results;
+    //     console.log('>>>results = ', results);
 
-        console.log('>>>check user = ', users);
-        res.send(JSON.stringify(users));
-    });
+    //     console.log('>>>check user = ', users);
+    //     res.send(JSON.stringify(users));
+    // });
 };
 
 const postCreateUser = async (req, res) => {
