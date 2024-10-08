@@ -17,7 +17,6 @@ const getHelloWorld = (req, res) => {
     // connection.query('select * from users u', function (err, results, fields) {
     //     users = results;
     //     console.log('>>>results = ', results);
-
     //     console.log('>>>check user = ', users);
     //     res.send(JSON.stringify(users));
     // });
@@ -49,8 +48,11 @@ const postUpdateUser = async (req, res) => {
     let name = req.body.myname;
     let city = req.body.city;
 
-    await updateUserById(userId, email, name, city);
-
+    console.log('check: ');
+    await User.updateOne(
+        { _id: userId },
+        { email: email, name: name, city: city }
+    );
     res.send('update user success');
 };
 
@@ -66,8 +68,8 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.id;
-    let user = await getUserByID(userId);
-
+    //let user = await getUserByID(userId);
+    let user = await User.findById(userId).exec();
     res.render('edit.ejs', { user: user });
 };
 
