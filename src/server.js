@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ROUTE
+app.use('/', webRouter);
 app.use('/v1/api/', apiRouter);
 
 (async () => {
