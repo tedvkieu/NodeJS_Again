@@ -8,7 +8,10 @@ const {
     deleteUpdateUserAPI,
     postUploadSingleFileAPI,
     postUploadMultipleFileAPI,
+    postCreateCustomer,
 } = require('../controllers/apiController');
+
+const customerController = require('../controllers/customerController');
 
 routerAPI.get('/', (req, res) => {
     res.send('hello world api');
@@ -31,5 +34,8 @@ routerAPI.delete('/users', deleteUpdateUserAPI);
 routerAPI.post('/file', postUploadSingleFileAPI);
 
 routerAPI.post('/files', postUploadMultipleFileAPI);
+
+// ----------------- Customer
+routerAPI.post('/customers', customerController.postCreateCustomer);
 
 module.exports = routerAPI;
