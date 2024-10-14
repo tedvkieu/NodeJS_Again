@@ -63,5 +63,20 @@ module.exports = {
                 data: customers,
             });
         }
+    },
+    putUpdateACustomer: async (req, res) => {
+        let data =  req.body;
+        let customers = await customerService.updateACustomerService(data);
+        if (customers) {
+            return res.status(200).json({
+                EC: 0,
+                data: customers,
+            });
+        } else {
+            return res.status(200).json({
+                EC: -1,
+                data: customers,
+            });
+        }
     }
 };
