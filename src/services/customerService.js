@@ -67,6 +67,17 @@ const deleteCustomerService = async (id) => {
         return null;
     }
 };
+const deleteArrayCustomerService = async (arrIds) => {
+    try {
+        let result = await Customer.delete({ _id: { $in: arrIds } });
+        // toán tử in xóa các phần tử từ arrIds gửi vào 
+
+        return result;
+    } catch (error) {
+        console.log(error);
+        return null;
+    }
+}
 
 module.exports = {
     createCustomerService,
@@ -74,4 +85,5 @@ module.exports = {
     getAllCustomersService,
     updateACustomerService,
     deleteCustomerService,
+    deleteArrayCustomerService,
 };

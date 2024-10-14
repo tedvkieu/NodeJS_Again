@@ -87,4 +87,13 @@ module.exports = {
             data: result,
         });
     },
+    deleteArrayCustomer: async (req, res) => {
+        let ids = req.body.customersId;
+
+        let result = await customerService.deleteArrayCustomerService(ids)
+        return res.status(200).json({
+            EC: 0,
+            data: result,
+        });
+    }
 };

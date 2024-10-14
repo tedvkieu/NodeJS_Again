@@ -10,7 +10,10 @@ const customerSchema = new mongoose.Schema(
         image: String,
         description: String,
     },
-    { timestamps: true }
+    {
+        timestamps: true,
+   
+    }
 );
 
 customerSchema.plugin(mongoose_delete, { overrideMethods: 'all' });
