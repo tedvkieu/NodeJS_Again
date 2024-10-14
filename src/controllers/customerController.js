@@ -51,7 +51,7 @@ module.exports = {
         }
     },
     getAllCustomers: async (req, res) => {
-        let customers = await customerService.getAllCustomersService()
+        let customers = await customerService.getAllCustomersService();
         if (customers) {
             return res.status(200).json({
                 EC: 0,
@@ -65,7 +65,7 @@ module.exports = {
         }
     },
     putUpdateACustomer: async (req, res) => {
-        let data =  req.body;
+        let data = req.body;
         let customers = await customerService.updateACustomerService(data);
         if (customers) {
             return res.status(200).json({
@@ -78,5 +78,13 @@ module.exports = {
                 data: customers,
             });
         }
-    }
+    },
+    deleteACustomer: async (req, res) => {
+        let id = req.body.id;
+        let result = await customerService.deleteCustomerService(id);
+        return res.status(200).json({
+            EC: 0,
+            data: result,
+        });
+    },
 };
