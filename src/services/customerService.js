@@ -28,9 +28,15 @@ const createArrayCustomerService = async (arr) => {
     }
 };
 
-const getAllCustomersService = async () => {
+const getAllCustomersService = async (limit, page) => {
     try {
-        let result = await Customer.find({});
+        let result = null;
+        if ((limit, page)) {
+            let offset = (page - 1) * limit;
+            result = await Customer.find({}).skip(offset).limit(limit).exec();
+        } else {
+            result = await Customer.find({});
+        }
 
         return result;
     } catch (error) {
@@ -70,19 +76,20 @@ const deleteCustomerService = async (id) => {
 const deleteArrayCustomerService = async (arrIds) => {
     try {
         let result = await Customer.delete({ _id: { $in: arrIds } });
-        // toán tử in xóa các phần tử từ arrIds gửi vào 
+        // toán tử in xóa các phần tử từ arrIds gửi vào
 
         return result;
     } catch (error) {
         console.log(error);
         return null;
     }
-}
+};
 
 module.exports = {
     createCustomerService,
     createArrayCustomerService,
     getAllCustomersService,
+
     updateACustomerService,
     deleteCustomerService,
     deleteArrayCustomerService,

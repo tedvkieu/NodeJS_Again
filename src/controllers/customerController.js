@@ -51,7 +51,19 @@ module.exports = {
         }
     },
     getAllCustomers: async (req, res) => {
-        let customers = await customerService.getAllCustomersService();
+        let limit = req.query.limit;
+        let page = req.query.page;
+
+        let customers = null;
+        if (limit && page) {
+            customers = await customerService.getAllCustomersService(
+                limit,
+                page
+            );
+        } else {
+            customers = await customerService.getAllCustomersService();
+        }
+
         if (customers) {
             return res.status(200).json({
                 EC: 0,
@@ -64,6 +76,7 @@ module.exports = {
             });
         }
     },
+
     putUpdateACustomer: async (req, res) => {
         let data = req.body;
         let customers = await customerService.updateACustomerService(data);
@@ -90,10 +103,10 @@ module.exports = {
     deleteArrayCustomer: async (req, res) => {
         let ids = req.body.customersId;
 
-        let result = await customerService.deleteArrayCustomerService(ids)
+        let result = await customerService.deleteArrayCustomerService(ids);
         return res.status(200).json({
             EC: 0,
             data: result,
         });
-    }
+    },
 };
