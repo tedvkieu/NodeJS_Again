@@ -1,6 +1,7 @@
 const { uploadSingleFile } = require('../services/fileService');
 const customerService = require('../services/customerService');
 
+
 module.exports = {
     postCreateCustomer: async (req, res) => {
         let { name, address, phone, email, description } = req.body;
@@ -51,6 +52,7 @@ module.exports = {
         }
     },
     getAllCustomers: async (req, res) => {
+    
         let limit = req.query.limit;
         let page = req.query.page;
         let name = req.query.name;
@@ -60,7 +62,8 @@ module.exports = {
             customers = await customerService.getAllCustomersService(
                 limit,
                 page,
-                name
+                name,
+                req.query
             );
         } else {
             customers = await customerService.getAllCustomersService();
