@@ -10,6 +10,7 @@ const apiRouter = require('./routes/apiRoute');
 const connection = require('./config/database');
 const fileUpload = require('express-fileupload');
 
+const { MongoClient } = require('mongodb');
 //Config
 configViewEngine(app);
 
@@ -22,9 +23,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', webRouter);
 app.use('/v1/api/', apiRouter);
 
+const url = process.env.DB_HOST_WITH_DRIVER;
+const client = new MongoClient(url);
+const dbName = process.env.DB_NAME;
+
 (async () => {
     try {
-        await connection();
+        //await connection();
+
+        // using mongo db driver
+        const url = process.env.DB_HOST_WITH_DRIVER;
+        const client = new MongoClient(url);
+        const dbName = process.env.DB_NAME;
+
+        await client.connect();
+
+        const db = client.db(dbName)
+        const collection = db.collection('documents')
+
         app.listen(port, hostname, () => {
             console.log(`Example app listening on port ${port}`);
         });
