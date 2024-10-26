@@ -38,8 +38,11 @@ const dbName = process.env.DB_NAME;
 
         await client.connect();
 
-        const db = client.db(dbName)
-        const collection = db.collection('documents')
+        const db = client.db(dbName);
+        const collection = db.collection('customers');
+
+        let a = await collection.findOne({ address: 'hanoi' });
+        console.log('file = ', a);
 
         app.listen(port, hostname, () => {
             console.log(`Example app listening on port ${port}`);
