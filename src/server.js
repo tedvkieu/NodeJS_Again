@@ -29,7 +29,7 @@ const dbName = process.env.DB_NAME;
 
 (async () => {
     try {
-        //await connection();
+        await connection();
 
         // using mongo db driver
         const url = process.env.DB_HOST_WITH_DRIVER;
@@ -40,6 +40,17 @@ const dbName = process.env.DB_NAME;
 
         const db = client.db(dbName);
         const collection = db.collection('customers');
+
+        collection.insertOne({
+            "name": 'Kieu',
+            address: {
+                provice: 'HN',
+                country: {
+                    name: 'vietnam',
+                    code: 110000,
+                },
+            },
+        });
 
         let a = await collection.findOne({ address: 'hanoi' });
         console.log('file = ', a);
