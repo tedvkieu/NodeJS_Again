@@ -11,6 +11,7 @@ const {
 } = require('../controllers/apiController');
 
 const customerController = require('../controllers/customerController');
+const { postCreateProject } = require('../controllers/projectController');
 
 routerAPI.get('/', (req, res) => {
     res.send('hello world api');
@@ -37,12 +38,13 @@ routerAPI.post('/files', postUploadMultipleFileAPI);
 // ----------------- Customer
 routerAPI.post('/customers', customerController.postCreateCustomer);
 routerAPI.post('/customers-many', customerController.postCreateArrayCustomer);
-
 routerAPI.get('/customers', customerController.getAllCustomers);
-
 routerAPI.put('/customers', customerController.putUpdateACustomer);
 routerAPI.delete('/customers', customerController.deleteACustomer);
 routerAPI.delete('/customers-many', customerController.deleteArrayCustomer);
+
+//---------------- pROJECT
+routerAPI.post('/projects', postCreateProject)
 
 routerAPI.get('/info', (req, res) => {
     return res.status(200).json({
